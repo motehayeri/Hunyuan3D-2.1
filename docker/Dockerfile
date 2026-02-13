@@ -69,7 +69,7 @@ ENV CUDA_NVCC_FLAGS="-allow-unsupported-compiler"
 
 # Install custom_rasterizer
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/custom_rasterizer && \
-    pip install -e .
+    pip install -e . --no-build-isolation
 
 # Install DifferentiableRenderer
 RUN cd /workspace/Hunyuan3D-2.1/hy3dpaint/DifferentiableRenderer && \
