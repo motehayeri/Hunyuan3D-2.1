@@ -14,11 +14,18 @@
 
 import os
 import cv2
-import bpy
 import math
 import numpy as np
 from io import StringIO
 from typing import Optional, Tuple, Dict, Any
+
+# Try to import bpy, but make it optional for Docker/non-Blender environments
+try:
+    import bpy
+    BPY_AVAILABLE = True
+except ImportError:
+    BPY_AVAILABLE = False
+    bpy = None  # type: ignore
 
 
 def _safe_extract_attribute(obj: Any, attr_path: str, default: Any = None) -> Any:

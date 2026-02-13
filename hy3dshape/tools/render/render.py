@@ -15,8 +15,18 @@
 
 import argparse, sys, os, math, re, glob
 from typing import *
-import bpy
-from mathutils import Vector, Matrix
+
+# Try to import bpy, but make it optional for Docker/non-Blender environments
+try:
+    import bpy
+    from mathutils import Vector, Matrix
+    BPY_AVAILABLE = True
+except ImportError:
+    BPY_AVAILABLE = False
+    bpy = None  # type: ignore
+    Vector = None  # type: ignore
+    Matrix = None  # type: ignore
+
 import numpy as np
 import json
 import glob
